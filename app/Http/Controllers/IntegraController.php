@@ -6,17 +6,12 @@ use App\Http\Resources\DebitAccountsResource;
 use App\Http\Resources\FinanceManagerResource;
 use App\Http\Resources\PayablesResource;
 use App\Http\Resources\SupplyCompanyResource;
+use App\Http\Resources\PrivateAccounts;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 class IntegraController extends Controller
 {
-/*    public function data()
-    {
-
-
-        dump($data);
-    }*/
     public function payablesPage()
     {
         $query = DB::connection('oracle')->table('itcon_pag ip')->select('f.nm_fornecedor','c.tp_vencimento','ip.cd_itcon_pag', 'ip.cd_con_pag', 'ip.vl_duplicata', 'ip.tp_quitacao', 'ip.dt_vencimento')
@@ -76,6 +71,16 @@ class IntegraController extends Controller
 
     public function privateAccountsPage(){
         return inertia('PrivateAccounts');
+    }
+
+    public function getPrivates()
+    {
+        $query = DB::connection('oracle')->table('itcon_rec it')
+            ->select('it.cd_itcon_rec','it.nr_parcela', 'c.dt_emissao', 'it.dt_vencimento', 'it.vl_duplicata', 'c.nm_cliente', 'c.tp_con_rec')
+            ->Join('con_rec c', 'c.cd_con_rec', '=', 'it.cd_con_rec');
+        $private = $query->paginate(10)->onEachSide(1);
+
+       return (["data" => PrivateAccounts::collection($private)]);
     }
     /**
      * Display a listing of the resource.

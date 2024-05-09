@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import {Head, router} from '@inertiajs/react';
 import IntegraLayout from "@/Layouts/IntegraLayout.jsx";
 import {ITCON_PAG_STATUS_CLASS_MAP, ITCON_PAG_STATUS_PAGAMENTO} from "@/constants.jsx";
 import Pagination from "@/Components/Pagination.jsx";
@@ -26,15 +26,23 @@ export default function DebitAccounts(debits) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {debits.debitAccounts.data.map((item) => (
-                                    <tr  key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td className="px-3 py-2">{item.cd_pagcon_pag}</td>
-                                        <td className="px-3 py-2">{item.cd_itcon_pag}</td>
-                                        <td className="px-3 py-2">R$ {item.vl_pago}</td>
-                                        <td className="px-3 py-2">{item.dt_pagamento}</td>
-                                        <td className="px-3 py-2">{item.nm_fornecedor}</td>
+                                {debits.debitAccounts.data.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="8" className="px-3 py-2 pt-4 text-center">
+                                            Nenhum resultado encontrado
+                                        </td>
                                     </tr>
-                                ))}
+                                ) : (
+                                    debits.debitAccounts.data.map((item) => (
+                                        <tr  key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td className="px-3 py-2">{item.cd_pagcon_pag}</td>
+                                            <td className="px-3 py-2">{item.cd_itcon_pag}</td>
+                                            <td className="px-3 py-2">R$ {item.vl_pago}</td>
+                                            <td className="px-3 py-2">{item.dt_pagamento}</td>
+                                            <td className="px-3 py-2">{item.nm_fornecedor}</td>
+                                        </tr>
+                                    ))
+                                )}
                                 </tbody>
                             </table>
                             <Pagination links={debits.debitAccounts.meta.links} />

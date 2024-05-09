@@ -25,14 +25,22 @@ export default function FinanceManager(finances) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {finances.finances.data.map((item) => (
-                                    <tr  key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td className="px-3 py-2">{item.CD_RESPONSAVEL}</td>
-                                        <td className="px-3 py-2">{item.NM_RESPONSAVEL}</td>
-                                        <CPFMasked cpf={item.NR_CPF} className="px-3 py-2"></CPFMasked>
-                                        <td className="px-3 py-2">{item.DS_ENDERECO}</td>
-                                    </tr>
-                                ))}
+                                {finances.finances.data.length === 0 ? (
+                                        <tr>
+                                            <td colSpan="8" className="px-3 py-2 pt-4 text-center">
+                                                Nenhum resultado encontrado
+                                            </td>
+                                        </tr>
+                                    ) : (
+                                    finances.finances.data.map((item) => (
+                                        <tr  key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td className="px-3 py-2">{item.CD_RESPONSAVEL}</td>
+                                            <td className="px-3 py-2">{item.NM_RESPONSAVEL}</td>
+                                            <CPFMasked cpf={item.NR_CPF} className="px-3 py-2"></CPFMasked>
+                                            <td className="px-3 py-2">{item.DS_ENDERECO}</td>
+                                        </tr>
+                                    ))
+                                )}
                                 </tbody>
                             </table>
                             <Pagination links={finances.finances.meta.links} />

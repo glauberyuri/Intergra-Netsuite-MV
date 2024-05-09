@@ -20,7 +20,7 @@ class DebitAccountsResource extends JsonResource
             "cd_pagcon_pag" => $this->cd_pagcon_pag,
             "cd_itcon_pag" => $this->cd_itcon_pag,
             "vl_pago" => $this->vl_pago,
-            "dt_pagamento" => (new Carbon($this->dt_pagamento))->format('Y-m-d')
+            "dt_pagamento" => (new Carbon($this->dt_pagamento))->format('d-m-Y')
         ];
     }
 }

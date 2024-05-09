@@ -95,8 +95,8 @@ return [
 
         'oracle' => [
             'driver'         => 'oracle',
-            'tns'            => env('DB_TNS', '(DESCRIPTION = (ADDRESS = (PROTOCOL=TCP)(HOST=172.17.3.175)(PORT=1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = mv2000_htb_gru.snfunmvdb.funvcnmvprod.oraclevcn.com)(INSTANCE_NAME=mv2000) ) )'),
-            'host'           => env('DB_HOST_ORACLE', '172.17.3.175'),
+            'tns'            => env('DB_TNS', '(DESCRIPTION = (ADDRESS = (PROTOCOL=TCP)(HOST=172.17.3.247)(PORT=1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = mv2000_3bj_gru.snfunmvdb.funvcnmvprod.oraclevcn.com)(INSTANCE_NAME=mv2000) ) )'),
+            'host'           => env('DB_HOST_ORACLE', '172.17.3.247'),
             'port'           => env('DB_PORT_ORACLE', '1521'),
             'database'       => env('DB_DATABASE_ORACLE', 'ORCL'),
             'username'       => env('DB_USERNAME_ORACLE', 'dbamv'),

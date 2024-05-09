@@ -26,15 +26,23 @@ export default function SupplyCompany(companies) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {companies.companies.data.map((item) => (
-                                    <tr  key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td className="px-3 py-2">{item.CD_FORNECEDOR}</td>
-                                        <td className="px-3 py-2">{item.NM_FORNECEDOR}</td>
-                                        <CNPJMasked cnpj={item.NR_CGC_CPF} className="px-3 py-2"></CNPJMasked>
-                                        <td className="px-3 py-2">{item.DS_ENDERECO}</td>
-                                        <td className="px-3 py-2">{item.NM_CIDADE}</td>
-                                    </tr>
-                                ))}
+                                {companies.companies.data.length === 0 ? (
+                                        <tr>
+                                            <td colSpan="8" className="px-3 py-2 pt-4 text-center">
+                                                Nenhum resultado encontrado
+                                            </td>
+                                        </tr>
+                                    ) : (
+                                    companies.companies.data.map((item) => (
+                                        <tr  key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td className="px-3 py-2">{item.CD_FORNECEDOR}</td>
+                                            <td className="px-3 py-2">{item.NM_FORNECEDOR}</td>
+                                            <CNPJMasked cnpj={item.NR_CGC_CPF} className="px-3 py-2"></CNPJMasked>
+                                            <td className="px-3 py-2">{item.DS_ENDERECO}</td>
+                                            <td className="px-3 py-2">{item.NM_CIDADE}</td>
+                                        </tr>
+                                    ))
+                                )}
                                 </tbody>
                             </table>
                             <Pagination links={companies.companies.meta.links} />

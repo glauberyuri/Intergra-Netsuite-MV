@@ -24,11 +24,15 @@ class PayablesResource extends JsonResource
         return [
             "nm_fornecedor" => $this->nm_fornecedor,
             "tp_vencimento" => $tp_vencimento,
+            "nr_parcela" => $this->nr_parcela,
             "cd_itcon_pag" => $this->cd_itcon_pag,
             "cd_con_pag" => $this->cd_con_pag,
             "vl_duplicata" => $this->vl_duplicata,
             "tp_quitacao" => $this->tp_quitacao,
-            "dt_vencimento" => (new Carbon($this->dt_vencimento))->format('Y-m-d')
+            "dt_vencimento" => (new Carbon($this->dt_vencimento))->format('d-m-Y'),
+            "cd_con_pag_previsao" => $this->cd_con_pag_previsao,
+            "vl_acrescimo" => $this->vl_acrescimo,
+            "vl_desconto" => $this->vl_desconto
         ];
     }
 }

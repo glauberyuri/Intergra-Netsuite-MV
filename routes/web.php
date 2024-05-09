@@ -32,6 +32,11 @@ route::get('/private-accounts', [\App\Http\Controllers\IntegraController::class,
 route::get('/get-private-table', [\App\Http\Controllers\IntegraController::class, 'getPrivates'])->name('private.get');
 
 
+route::get('/received', [\App\Http\Controllers\IntegraController::class, 'receivedPage'])->name('received.index');
+
+route::get('/stocks', [\App\Http\Controllers\IntegraController::class, 'stockContPage'])->name('stock.index');
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');

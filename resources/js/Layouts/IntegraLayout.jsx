@@ -26,14 +26,20 @@ export default function IntegraLayout({ header, children }) {
                                 <NavLink href={route('debit.index')} active={route().current('debit.index')}>
                                     Efetuado Pagamento
                                 </NavLink>
+                                <NavLink href={route('private.index')} active={route().current('private.index')}>
+                                    Conta a Receber
+                                </NavLink>
+                                <NavLink href={route('received.index')} active={route().current('received .index')}>
+                                    Recebidos
+                                </NavLink>
                                 <NavLink href={route('company.index')} active={route().current('company.index')}>
                                     Fornecedor
                                 </NavLink>
                                 <NavLink href={route('finance.index')} active={route().current('finance.index')}>
                                     Responsavel
                                 </NavLink>
-                                <NavLink href={route('private.index')} active={route().current('private.index')}>
-                                    Contas Particulares
+                                <NavLink href={route('stock.index')} active={route().current('stock.index')}>
+                                    Estoque
                                 </NavLink>
                             </div>
                         </div>
@@ -66,8 +72,8 @@ export default function IntegraLayout({ header, children }) {
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
-                            Dashboard
+                        <ResponsiveNavLink href={route('payables.index')} active={route().current('payables.index')}>
+                            Inicio
                         </ResponsiveNavLink>
                     </div>
                 </div>
